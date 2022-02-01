@@ -1,13 +1,6 @@
 # Semester Project: Code Change Representation #
 The main goal of our code below is to adapt the data of the BugSwarm API to the CC2VEC code so that we can train CC2Vec on the BugSwarm API with the goal of predicting 
 if a commit will break the CI of a project. Once adapted, we test the performance of CC2Vec on our dataset and propose some optimizations on it. 
-## As github doesn't support large files, please follow the steps towards executing our code: ## 
---------
-### 1- clone CC2Vec into this repository. ###
-link for CC2Vec code : https://github.com/CC2Vec/CC2Vec.git 
-### 2- Add the CC2Vec data+model folder to this repository :  ###
-Please follow the link below in order to download the data and pretrained models of CC2Vec : 
-https://drive.google.com/file/d/1rPYGjw87YMNAdb2_2baO967i7ynp8sa2/view?usp=sharing 
 
 ## Documentation of the code ## 
 ### CC2Vec_Data_Visualization.ipynb ### 
