@@ -1,7 +1,14 @@
 # Semester Project: Code Change Representation #
-The main goal of our code below is to adapt the data of the BugSwarm API to the CC2VEC code so that we can train CC2Vec on the BugSwarm API with the goal of predicting 
-if a commit will break the CI of a project. Once adapted, we test the performance of CC2Vec on our dataset and propose some optimizations on it. 
+The main goal of our project is to predict build failure during the Continuous Integration Process. After going through the litterature and the studies related to build failure classification, we have chosen to use code changes representations as input to our prediction model. In order to be able to model code changes, we mainly use CC2Vec (link to CC2Vec: https://arxiv.org/pdf/2003.05620.pdf) which was one of the papers we went through during our literature review). The reason behind our choice is that according to the authors CC2Vec, it outperforms all of the state of the art approaches. Moreover it is language agnostic and its source code is available. 
+For our dataset, we used BugSwarm (link to BugSwarm: http://www.bugswarm.org/docs/introduction/what-is-bugswarm/) to retrieve code changes as it has an API that provides fail-pass build pairs. (link to BugSwarm). 
+Hereafter the different steps we went through during the project: 
+a)	preprocess BugSwarm data to adapt it to BugSwarm Commits. 
+b)	train CC2Vec model on BugSwarm Commits.
+c)	extract vector representation of Code Change using CC2Vec model. 
+d)	Use vectors extracted by CC2Vec as inputs for build classification using supervised ML algorithms
 
+In the notebooks included in this repository, you will find the different steps we went through during the project including the difficulties we faced. 
+For further information about the notebooks, read the documentation of code below. 
 ## Documentation of the code ## 
 ### CC2Vec_Data_Visualization.ipynb ### 
 #### get_diff() : ####
