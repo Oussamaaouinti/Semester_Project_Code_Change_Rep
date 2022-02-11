@@ -23,7 +23,7 @@ We  first call the bugswarm api filter, then we parse the data we have in BugSwa
 to the commit so that it can be identical to the CC2Vec data.
 
 #### Training the model : #### 
-In order to train the CC2Vec model on our dataset, you shoulf first go to the CC2Vec and execute the following command: 
+In order to train the CC2Vec model on our dataset, you should first go to the CC2Vec and execute the following command: 
 
 ``python jit_cc2ftr.py -train -train_data ../bugswarm_beta2.0_training_dataset -test_data ../bugswarm_beta2.0_training_dataset -dictionary_data ../data+model/data/jit/qt_dict.pkl``
 
@@ -32,5 +32,11 @@ While training the CC2Vec model on our dataset we had an issue with the CC2Vec c
 we estimated that the error should be related to a parsing in the command we executed. Thus, we decided to integrate CC2Vec code directly inside our code so that we manage 
 to isolate the problem. This notebook is mainly proposed by Florent. Then we tried to work all of us on it in order to solve the issue related to the adaptation of our dataset to CC2Vec. 
 
-### Oussama_Predict_build_result_with_BugSwarm_and_CC2Vec.ipynb ### 
-In this Notebook, we used the unidiff library from python, which is a library that allows us to retrieve directly the representation of commits with files instead of doing it manually. Then we call the functions used by CC2Vec in order to train their model on our data.   
+### trainCC2VecOnBugSwarm.ipynb ### 
+By following the different steps in the notebook, users would be able to train CC2Vec model on BugSwarm dataset using CC2Vec dictionary. 
+
+### Classification.ipynb ###
+In this notebook, we created 3 classifiers to predict Build failures based on the vector presentation obtained in trainCC2VecOnBugSwarm.ipynb. 
+Our classifiers weren't working properly because of issues related to the vector representation returned by CC2Vec. After investigating the issue, we figured out that the problem is mainly related to the dictionary as there are many null tokens when trying to map BugSwarm Code in the dictionary. 
+Thus, we created in the Classification.ipynb a new dictionary based on BugSwarm Code and retrained CC2Vec using our new dictionary. 
+An error was returned in the vectors extraction step due to a mismatching between the expected input from the neural network and the size of the dictionary. CC2Vec HRNN was implemented using static fix input size. After resizing our dictionary, we had an issue with the remote server we are working on.  
